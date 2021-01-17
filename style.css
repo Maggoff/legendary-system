@@ -36,11 +36,13 @@ button{
 }
 
 .myCanvas{
-  display: flex;
-  justify-content: center;
+  width: 99vw;
+  overflow-x: scroll;
+  display: none;
 }
 
 canvas{
+  margin: 0 20px 0 20px;
   display: none;
 }
 

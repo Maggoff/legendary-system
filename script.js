@@ -198,7 +198,36 @@ let Barchart = function(options){
     let barIndex = 0;
     let numberOfBars = Object.keys(this.options.data).length;
     let barSize = (canvasActualWidth)/numberOfBars;
+
+    if(barSize<40){
+      this.canvas.width = numberOfBars * 40;
+      canvasActualWidth = this.canvas.width - this.options.padding * 2;
+      barSize = (canvasActualWidth)/numberOfBars;
+
+      //drawing the grid lines
+    let gridValue = 0;
+    while (gridValue <= maxValue){
+      let gridY = canvasActualHeight * (1 - gridValue/maxValue) + this.options.padding;
+      drawLine(
+        this.ctx,
+        0,
+        gridY,
+        this.canvas.width,
+        gridY,
+        this.options.gridColor
+      );
+             
+      //writing grid markers
+      this.ctx.save();
+      this.ctx.fillStyle = this.options.gridColor;
+      this.ctx.font = "bold 10px Arial";
+      this.ctx.fillText(gridValue, 0,gridY - 2);
+      this.ctx.restore();
  
+      gridValue+=this.options.gridScale;
+    }
+    }
+  
     for (categ in this.options.data){
       let val = this.options.data[categ];
       let barHeight = Math.round( canvasActualHeight * val/maxValue);
@@ -228,6 +257,7 @@ let Barchart = function(options){
 
 function drawCanvas1() {
   myCanvas1.style.display = "block";
+  document.getElementById("divMyCanvas1").style.display = "block";
 
   ctx1.clearRect(0, 0, myCanvas1.width, myCanvas1.height);
 
@@ -240,7 +270,7 @@ function drawCanvas1() {
       max = myData1[analizeArrayOne[i]]
     }
   }
-  console.log(max);
+
   if(max>=500){
     scale = 50;
   } else {
@@ -284,6 +314,7 @@ function drawCanvas1() {
 
 function drawCanvas2() {
   myCanvas2.style.display = "block";
+  document.getElementById("divMyCanvas2").style.display = "block";
 
   ctx2.clearRect(0, 0, myCanvas2.width, myCanvas2.height);
 
@@ -298,7 +329,7 @@ function drawCanvas2() {
       max = myData[analizeArrayTwo[i]]
     }
   }
-  console.log(max);
+
   if(max>=500){
     scale = 50;
   } else {
@@ -342,6 +373,7 @@ function drawCanvas2() {
 
 function drawCanvas3() {
   myCanvas3.style.display = "block";
+  document.getElementById("divMyCanvas3").style.display = "block";
 
   ctx3.clearRect(0, 0, myCanvas3.width, myCanvas3.height);
 
@@ -356,7 +388,7 @@ function drawCanvas3() {
       max = myData[analizeArrayTree[i]]
     }
   }
-  console.log(max);
+
   if(max>=500){
     scale = 50;
   } else {
@@ -369,7 +401,11 @@ function drawCanvas3() {
         if(max>=50){
           scale = 10;
         } else {
-          scale = 1;
+          if(max>=25){
+            scale = 5;
+          } else {
+            scale = 1;
+          }
         }
       }
     }
