@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="enterForm">
+    <h2>Введіть текст для аналізу</h2>
+    <textarea id="enterText"></textarea>
+    <div class="btns">
+      <button onclick="drawCanvas1()">Аналіз одного символа</button>
+      <button onclick="drawCanvas2()">Аналіз двох символів</button>
+      <button onclick="drawCanvas3()">Аналіз трьох символів</button>
+    </div>
+  </div>
+  
+  <div class="myCanvas">
+    <canvas id="myCanvas1"></canvas>
+  </div>
+  <div class="myCanvas">
+    <canvas id="myCanvas2"></canvas>
+  </div>
+  <div class="myCanvas">
+    <canvas id="myCanvas3"></canvas>
+  </div>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.enterForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+#enterText{
+  width: 40vw;
+  height: 40vh;
+  resize: none;
+  font-size: 18px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-evenly;
+  width: 40vw;
+}
+
+button{
+  width: 30%;
+  margin-top: 30px;
+}
+
+.myCanvas{
+  display: flex;
+  justify-content: center;
+}
+
+canvas{
+  display: none;
+}
