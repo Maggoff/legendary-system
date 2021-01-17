@@ -1,14 +1,14 @@
 let myCanvas1 = document.getElementById("myCanvas1");
 myCanvas1.width = document.documentElement.clientWidth - 30;
-myCanvas1.height = 800;
+myCanvas1.height = document.documentElement.clientHeight / 3;
 
 let myCanvas2 = document.getElementById("myCanvas2");
 myCanvas2.width = document.documentElement.clientWidth - 30;
-myCanvas2.height = 800;
+myCanvas2.height = document.documentElement.clientHeight / 3;
 
 let myCanvas3 = document.getElementById("myCanvas3");
 myCanvas3.width = document.documentElement.clientWidth - 30;
-myCanvas3.height = 800;
+myCanvas3.height = document.documentElement.clientHeight / 3;
   
 let ctx1 = myCanvas1.getContext("2d");
 let ctx2 = myCanvas2.getContext("2d");
@@ -36,7 +36,6 @@ function drawBar(ctx, upperLeftCornerX, upperLeftCornerY, width, height, color){
 function getText(){
   let text = document.getElementById("enterText");
   text = text.value;
-  console.log(text);
   return text;
 }
 
@@ -44,49 +43,39 @@ let analizeArrayOne;
 function oneSymbol(text){
   let analize = {};
     for(let i=0; i<text.length; i++){
-      console.log("suckle i start");
-      console.log("i = "+i);
+      //console.log("suckle i start");
+      //console.log("i = "+i);
       analizeArrayOne = Object.keys(analize);
-      console.log(analizeArrayOne);
-      console.log("analizeArrayOne.length = "+analizeArrayOne.length);
+      //console.log(analizeArrayOne);
+      //console.log("analizeArrayOne.length = "+analizeArrayOne.length);
       if(analizeArrayOne.length==0){
-        console.log("if 0 start")
+        //console.log("if 0 start")
         analize[text[i]] = 1;
       } else {
         for(let j=0; j<analizeArrayOne.length; j++){
-          console.log("suckle j start");
-          // console.log("analizeArray.length = "+analizeArray.length);
-          console.log("j = "+j);
-          console.log("text = "+text[i]);
+          //console.log("suckle j start");
+          //console.log("analizeArrayOne.length = "+analizeArrayOne.length);
+          //console.log("j = "+j);
+          //console.log("text = "+text[i]);
           let pos = analizeArrayOne.indexOf(text[i]);
-          console.log("pos = "+pos);
+          //console.log("pos = "+pos);
           if(pos == -1){
-            console.log("false text start");
+            //console.log("false text start");
             analize[text[i]] = 1;
-            console.log(analize);
+            //console.log(analize);
             analizeArrayOne = Object.keys(analize);
             break;
           } else {
-            console.log("true text start");
+            //console.log("true text start");
             analize[analizeArrayOne[pos]] += 1;
-            console.log(analize);
+            //console.log(analize);
             analizeArrayOne = Object.keys(analize);
             break;
           }
-          // if(text[i]==analizeArray[j]){
-          //   console.log("if text start");
-          //   analize[analizeArray[j]] += 1;
-          //   console.log(analize);
-          //   break;
-          // } else {
-          //   console.log("else text start");
-          //   analize[text[i]] = 1;
-          //   console.log(analize);
-          // }
         }
       }
     }
-  console.log(analize);
+  //console.log(analize);
   return analize;
 }
 
@@ -94,38 +83,38 @@ let analizeArrayTwo;
 function twoSymbol(text){
   let analize = {};
     for(let i=0; i<text.length-1; i++){
-      console.log("suckle i start");
-      console.log("i = "+i);
+      //console.log("suckle i start");
+      //console.log("i = "+i);
       analizeArrayTwo = Object.keys(analize);
-      console.log(analizeArrayTwo);
-      console.log("analizeArrayTwo.length = "+analizeArrayTwo.length);
+      //console.log(analizeArrayTwo);
+      //console.log("analizeArrayTwo.length = "+analizeArrayTwo.length);
       if(analizeArrayTwo.length==0){
-        console.log("if 0 start")
+        //console.log("if 0 start")
         analize[text[i]+text[i+1]] = 1;
       } else {
         for(let j=0; j<analizeArrayTwo.length; j++){
-          console.log("suckle j start");
-          console.log("j = "+j);
-          console.log("text = "+text[i]);
+          //console.log("suckle j start");
+          //console.log("j = "+j);
+          //console.log("text = "+text[i]);
           let pos = analizeArrayTwo.indexOf(text[i]+text[i+1]);
-          console.log("pos = "+pos);
+          //console.log("pos = "+pos);
           if(pos == -1){
-            console.log("false text start");
+            //console.log("false text start");
             analize[text[i]+text[i+1]] = 1;
-            console.log(analize);
+            //console.log(analize);
             analizeArrayTwo = Object.keys(analize);
             break;
           } else {
-            console.log("true text start");
+            //console.log("true text start");
             analize[analizeArrayTwo[pos]] += 1;
-            console.log(analize);
+            //console.log(analize);
             analizeArrayTwo = Object.keys(analize);
             break;
           }
         }
       }
     }
-  console.log(analize);
+  //console.log(analize);
   return analize;
 }
 
@@ -133,65 +122,40 @@ let analizeArrayTree;
 function treeSymbol(text){
   let analize = {};
     for(let i=0; i<text.length-2; i++){
-      console.log("suckle i start");
-      console.log("i = "+i);
+      //console.log("suckle i start");
+      //console.log("i = "+i);
       analizeArrayTree = Object.keys(analize);
-      console.log(analizeArrayTree);
-      console.log("analizeArrayTree.length = "+analizeArrayTree.length);
+      //console.log(analizeArrayTree);
+      //console.log("analizeArrayTree.length = "+analizeArrayTree.length);
       if(analizeArrayTree.length==0){
-        console.log("if 0 start")
+        //console.log("if 0 start")
         analize[text[i]+text[i+1]+text[i+2]] = 1;
       } else {
         for(let j=0; j<analizeArrayTree.length; j++){
-          console.log("suckle j start");
-          console.log("j = "+j);
-          console.log("text = "+text[i]);
+          //console.log("suckle j start");
+          //console.log("j = "+j);
+          //console.log("text = "+text[i]);
           let pos = analizeArrayTree.indexOf(text[i]+text[i+1]+text[i+2]);
-          console.log("pos = "+pos);
+          //console.log("pos = "+pos);
           if(pos == -1){
-            console.log("false text start");
+            //console.log("false text start");
             analize[text[i]+text[i+1]+text[i+2]] = 1;
-            console.log(analize);
+            //console.log(analize);
             analizeArrayTree = Object.keys(analize);
             break;
           } else {
-            console.log("true text start");
+            //console.log("true text start");
             analize[analizeArrayTree[pos]] += 1;
-            console.log(analize);
+            //console.log(analize);
             analizeArrayTree = Object.keys(analize);
             break;
           }
         }
       }
     }
-  console.log(analize);
+  //console.log(analize);
   return analize;
 }
-
-// let myVinyls = {
-//   "Classical music": 10,
-//   "Alternative rock": 104,
-//   Pop: 22,
-//   "h music": 10,
-//   "c rock": 104,
-//   Popd: 22,
-//   "l music": 10,
-//   "c rock": 104,
-//   "Pop": 22,
-//   "jj music": 10,
-//   "d rock": 104,
-//   "Pop": 22,
-//   "Classical music": 15,
-//   "f rock": 104,
-//   "Pop": 22,
-//   "t music": 10,
-//   "e rock": 104,
-//   "Pop": 22,
-//   "a music": 10,
-//   "x rock": 104,
-//   "Pop": 22,
-//   "Jazz": 12
-// };
 
 let Barchart = function(options){
   this.options = options;
@@ -247,17 +211,15 @@ let Barchart = function(options){
         this.colors[barIndex%this.colors.length]
       );
 
-        console.log(this.options.analizeArray.length);
-        console.log(this.options.analizeArray);
+        //console.log(this.options.analizeArray.length);
+        //console.log(this.options.analizeArray);
       //writing grid markers
-      // for(let i=0; i<this.options.analizeArray.length; i++){
-        console.log("for = "+barIndex)
+        //console.log("for = "+barIndex)
         this.ctx.save();
         this.ctx.fillStyle = this.options.gridColor;
         this.ctx.font = "15px Arial";
-        this.ctx.fillText(this.options.analizeArray[barIndex], (barSize/1.5)+(barSize*barIndex+1), 792);
+        this.ctx.fillText(this.options.analizeArray[barIndex], (barSize/1.5)+(barSize*barIndex+1), (document.documentElement.clientHeight / 3)-5);
         this.ctx.restore();
-      // }
  
       barIndex++;
     }
@@ -270,29 +232,32 @@ function drawCanvas1() {
   ctx1.clearRect(0, 0, myCanvas1.width, myCanvas1.height);
 
   text = getText();
-
-  console.log(text.length);
-
-  let scale;
-  if(text.length>=2000){
+  myData1 = oneSymbol(text);
+  
+  max = 0;
+  for(let i=0; i<analizeArrayOne.length; i++){
+    if(myData1[analizeArrayOne[i]]>max){
+      max = myData1[analizeArrayOne[i]]
+    }
+  }
+  console.log(max);
+  if(max>=500){
     scale = 50;
   } else {
-    if(text.length>=500){
+    if(max>=250){
       scale = 25;
     } else {
-      if(text.length>=100){
-        scale = 10;
+      if(max>=100){
+        scale = 15;
       } else {
-        if(text.length>=50){
-          scale = 5;
+        if(max>=50){
+          scale = 10;
         } else {
           scale = 1;
         }
       }
     }
   }
-
-  myData1 = oneSymbol(text);
 
   let myBarchart1 = new Barchart(
     {
@@ -315,29 +280,34 @@ function drawCanvas2() {
   ctx2.clearRect(0, 0, myCanvas2.width, myCanvas2.height);
 
   text = getText();
+  myData2 = twoSymbol(text);
 
-  console.log(text.length);
+  //console.log(text.length);
 
-  let scale;
-  if(text.length>=2000){
+  max = 0;
+  for(let i=0; i<analizeArrayTwo.length; i++){
+    if(myData1[analizeArrayTwo[i]]>max){
+      max = myData1[analizeArrayTwo[i]]
+    }
+  }
+  console.log(max);
+  if(max>=500){
     scale = 50;
   } else {
-    if(text.length>=500){
+    if(max>=250){
       scale = 25;
     } else {
-      if(text.length>=100){
-        scale = 10;
+      if(max>=100){
+        scale = 15;
       } else {
-        if(text.length>=50){
-          scale = 5;
+        if(max>=50){
+          scale = 10;
         } else {
           scale = 1;
         }
       }
     }
   }
-
-  myData2 = twoSymbol(text);
 
   let myBarchart2 = new Barchart(
     {
@@ -360,29 +330,34 @@ function drawCanvas3() {
   ctx3.clearRect(0, 0, myCanvas3.width, myCanvas3.height);
 
   text = getText();
+  myData3 = treeSymbol(text);
 
-  console.log(text.length);
+  //console.log(text.length);
 
-  let scale;
-  if(text.length>=2000){
+  max = 0;
+  for(let i=0; i<analizeArrayTree.length; i++){
+    if(myData1[analizeArrayTree[i]]>max){
+      max = myData1[analizeArrayTree[i]]
+    }
+  }
+  console.log(max);
+  if(max>=500){
     scale = 50;
   } else {
-    if(text.length>=500){
+    if(max>=250){
       scale = 25;
     } else {
-      if(text.length>=100){
-        scale = 10;
+      if(max>=100){
+        scale = 15;
       } else {
-        if(text.length>=50){
-          scale = 5;
+        if(max>=50){
+          scale = 10;
         } else {
           scale = 1;
         }
       }
     }
   }
-
-  myData3 = treeSymbol(text);
 
   let myBarchart3 = new Barchart(
     {
