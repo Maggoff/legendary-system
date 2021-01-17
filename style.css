@@ -43,3 +43,20 @@ button{
 canvas{
   display: none;
 }
+
+.table1,
+.table2,
+.table3{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+table, tbody, th, td, tr{
+  border: 1px solid #000000;
+}
+
+th, tr{
+  text-align: center;
+}

@@ -272,6 +272,14 @@ function drawCanvas1() {
   );
 
   myBarchart1.draw();
+
+  let table = document.getElementById("table1");
+  table.innerHTML = '<table><tbody id="tableBody1"><tr><th>Буква</th><th>Кількість входжень</th>';
+  let tableBody = document.getElementById("tableBody1");
+  for(let i=0; i<analizeArrayOne.length; i++){
+    tableBody.innerHTML += "<tr><td>" + analizeArrayOne[i] + "</td><td>" + myData1[analizeArrayOne[i]] + "</td></tr>";
+  }
+  table1.innerHTML += "</tbody></table>";
 }
 
 function drawCanvas2() {
@@ -280,14 +288,14 @@ function drawCanvas2() {
   ctx2.clearRect(0, 0, myCanvas2.width, myCanvas2.height);
 
   text = getText();
-  myData2 = twoSymbol(text);
+  myData = twoSymbol(text);
 
   //console.log(text.length);
 
   max = 0;
   for(let i=0; i<analizeArrayTwo.length; i++){
-    if(myData1[analizeArrayTwo[i]]>max){
-      max = myData1[analizeArrayTwo[i]]
+    if(myData[analizeArrayTwo[i]]>max){
+      max = myData[analizeArrayTwo[i]]
     }
   }
   console.log(max);
@@ -315,13 +323,21 @@ function drawCanvas2() {
       padding:25,
       gridScale:scale,
       gridColor:"#000",
-      data:myData2,
+      data:myData,
       analizeArray:analizeArrayTwo,
       colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
     }
   );
 
   myBarchart2.draw();
+
+  let table = document.getElementById("table2");
+  table.innerHTML = '<table><tbody id="tableBody2"><tr><th>Букви</th><th>Кількість входжень</th>';
+  let tableBody = document.getElementById("tableBody2");
+  for(let i=0; i<analizeArrayTwo.length; i++){
+    tableBody.innerHTML += "<tr><td>" + analizeArrayTwo[i] + "</td><td>" + myData[analizeArrayTwo[i]] + "</td></tr>";
+  }
+  table.innerHTML += "</tbody></table>";
 }
 
 function drawCanvas3() {
@@ -330,14 +346,14 @@ function drawCanvas3() {
   ctx3.clearRect(0, 0, myCanvas3.width, myCanvas3.height);
 
   text = getText();
-  myData3 = treeSymbol(text);
+  myData = treeSymbol(text);
 
   //console.log(text.length);
 
   max = 0;
   for(let i=0; i<analizeArrayTree.length; i++){
-    if(myData1[analizeArrayTree[i]]>max){
-      max = myData1[analizeArrayTree[i]]
+    if(myData[analizeArrayTree[i]]>max){
+      max = myData[analizeArrayTree[i]]
     }
   }
   console.log(max);
@@ -365,11 +381,19 @@ function drawCanvas3() {
       padding:25,
       gridScale:scale,
       gridColor:"#000",
-      data:myData3,
+      data:myData,
       analizeArray:analizeArrayTree,
       colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
     }
   );
 
   myBarchart3.draw();
+
+  let table = document.getElementById("table3");
+  table.innerHTML = '<table><tbody id="tableBody3"><tr><th>Букви</th><th>Кількість входжень</th>';
+  let tableBody = document.getElementById("tableBody3");
+  for(let i=0; i<analizeArrayTree.length; i++){
+    tableBody.innerHTML += "<tr><td>" + analizeArrayTree[i] + "</td><td>" + myData[analizeArrayTree[i]] + "</td></tr>";
+  }
+  table.innerHTML += "</tbody></table>";
 }
