@@ -205,27 +205,27 @@ let Barchart = function(options){
       barSize = (canvasActualWidth)/numberOfBars;
 
       //drawing the grid lines
-    let gridValue = 0;
-    while (gridValue <= maxValue){
-      let gridY = canvasActualHeight * (1 - gridValue/maxValue) + this.options.padding;
-      drawLine(
-        this.ctx,
-        0,
-        gridY,
-        this.canvas.width,
-        gridY,
-        this.options.gridColor
-      );
-             
-      //writing grid markers
-      this.ctx.save();
-      this.ctx.fillStyle = this.options.gridColor;
-      this.ctx.font = "bold 10px Arial";
-      this.ctx.fillText(gridValue, 0,gridY - 2);
-      this.ctx.restore();
- 
-      gridValue+=this.options.gridScale;
-    }
+      let gridValue = 0;
+      while (gridValue <= maxValue){
+        let gridY = canvasActualHeight * (1 - gridValue/maxValue) + this.options.padding;
+        drawLine(
+          this.ctx,
+          0,
+          gridY,
+          this.canvas.width,
+          gridY,
+          this.options.gridColor
+        );
+              
+        //writing grid markers
+        this.ctx.save();
+        this.ctx.fillStyle = this.options.gridColor;
+        this.ctx.font = "bold 10px Arial";
+        this.ctx.fillText(gridValue, 0,gridY - 2);
+        this.ctx.restore();
+  
+        gridValue+=this.options.gridScale;
+      }
     }
   
     for (categ in this.options.data){

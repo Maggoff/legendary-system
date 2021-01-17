@@ -62,3 +62,24 @@ table, tbody, th, td, tr{
 th, tr{
   text-align: center;
 }
+
+.sideBtns{
+  position: fixed;
+  left: 15px;
+  bottom: 15px;
+}
+
+.sideBtns a{
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+  background-color: aliceblue;
+  border: 1px solid #000000;
+  padding: 5px 10px;
+  border-radius: 180;
+  text-align: center;
+}
+
+.sideBtns a:hover{
+  background-color: antiquewhite;
+}
