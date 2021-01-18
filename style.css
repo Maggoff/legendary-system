@@ -78,6 +78,7 @@ th, tr{
   padding: 5px 10px;
   border-radius: 180;
   text-align: center;
+  transition: 0.4s;
 }
 
 .sideBtns a:hover{

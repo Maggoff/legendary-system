@@ -157,6 +157,33 @@ function treeSymbol(text){
   return analize;
 }
 
+function sortAlfOne(analize){
+  var sorted = {};
+  Object.keys(analize).sort().forEach(function(val){
+    sorted[val] = analize[val];
+  });
+  analizeArrayOne = Object.keys(sorted);
+  return sorted;
+}
+
+function sortAlfTwo(analize){
+  var sorted = {};
+  Object.keys(analize).sort().forEach(function(val){
+    sorted[val] = analize[val];
+  });
+  analizeArrayTwo = Object.keys(sorted);
+  return sorted;
+}
+
+function sortAlfTree(analize){
+  var sorted = {};
+  Object.keys(analize).sort().forEach(function(val){
+    sorted[val] = analize[val];
+  });
+  analizeArrayTree = Object.keys(sorted);
+  return sorted;
+}
+
 let Barchart = function(options){
   this.options = options;
   this.canvas = options.canvas;
@@ -256,180 +283,200 @@ let Barchart = function(options){
 }
 
 function drawCanvas1() {
-  myCanvas1.style.display = "block";
-  document.getElementById("divMyCanvas1").style.display = "block";
 
   ctx1.clearRect(0, 0, myCanvas1.width, myCanvas1.height);
 
   text = getText();
-  myData1 = oneSymbol(text);
-  
-  max = 0;
-  for(let i=0; i<analizeArrayOne.length; i++){
-    if(myData1[analizeArrayOne[i]]>max){
-      max = myData1[analizeArrayOne[i]]
-    }
-  }
+  if(text.length>=1){
 
-  if(max>=500){
-    scale = 50;
-  } else {
-    if(max>=250){
-      scale = 25;
-    } else {
-      if(max>=100){
-        scale = 15;
-      } else {
-        if(max>=50){
-          scale = 10;
-        } else {
-          scale = 1;
-        }
+    myCanvas1.style.display = "block";
+    document.getElementById("divMyCanvas1").style.display = "block";
+
+    myData1 = oneSymbol(text);
+    myData1 = sortAlfOne(myData1);
+
+    max = 0;
+    for (const property in myData1) {
+      if(myData1[property]>max){
+        max = myData1[property]
       }
     }
-  }
 
-  let myBarchart1 = new Barchart(
-    {
-      canvas:myCanvas1,
-      padding:25,
-      gridScale:scale,
-      gridColor:"#000",
-      data:myData1,
-      analizeArray:analizeArrayOne,
-      colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
-    }
-  );
-
-  myBarchart1.draw();
-
-  let table = document.getElementById("table1");
-  table.innerHTML = '<table><tbody id="tableBody1"><tr><th>Буква</th><th>Кількість входжень</th>';
-  let tableBody = document.getElementById("tableBody1");
-  for(let i=0; i<analizeArrayOne.length; i++){
-    tableBody.innerHTML += "<tr><td>" + analizeArrayOne[i] + "</td><td>" + myData1[analizeArrayOne[i]] + "</td></tr>";
-  }
-  table1.innerHTML += "</tbody></table>";
-}
-
-function drawCanvas2() {
-  myCanvas2.style.display = "block";
-  document.getElementById("divMyCanvas2").style.display = "block";
-
-  ctx2.clearRect(0, 0, myCanvas2.width, myCanvas2.height);
-
-  text = getText();
-  myData = twoSymbol(text);
-
-  //console.log(text.length);
-
-  max = 0;
-  for(let i=0; i<analizeArrayTwo.length; i++){
-    if(myData[analizeArrayTwo[i]]>max){
-      max = myData[analizeArrayTwo[i]]
-    }
-  }
-
-  if(max>=500){
-    scale = 50;
-  } else {
-    if(max>=250){
-      scale = 25;
+    if(max>=500){
+      scale = 50;
     } else {
-      if(max>=100){
-        scale = 15;
+      if(max>=250){
+        scale = 25;
       } else {
-        if(max>=50){
-          scale = 10;
+        if(max>=100){
+          scale = 15;
         } else {
-          scale = 1;
-        }
-      }
-    }
-  }
-
-  let myBarchart2 = new Barchart(
-    {
-      canvas:myCanvas2,
-      padding:25,
-      gridScale:scale,
-      gridColor:"#000",
-      data:myData,
-      analizeArray:analizeArrayTwo,
-      colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
-    }
-  );
-
-  myBarchart2.draw();
-
-  let table = document.getElementById("table2");
-  table.innerHTML = '<table><tbody id="tableBody2"><tr><th>Букви</th><th>Кількість входжень</th>';
-  let tableBody = document.getElementById("tableBody2");
-  for(let i=0; i<analizeArrayTwo.length; i++){
-    tableBody.innerHTML += "<tr><td>" + analizeArrayTwo[i] + "</td><td>" + myData[analizeArrayTwo[i]] + "</td></tr>";
-  }
-  table.innerHTML += "</tbody></table>";
-}
-
-function drawCanvas3() {
-  myCanvas3.style.display = "block";
-  document.getElementById("divMyCanvas3").style.display = "block";
-
-  ctx3.clearRect(0, 0, myCanvas3.width, myCanvas3.height);
-
-  text = getText();
-  myData = treeSymbol(text);
-
-  //console.log(text.length);
-
-  max = 0;
-  for(let i=0; i<analizeArrayTree.length; i++){
-    if(myData[analizeArrayTree[i]]>max){
-      max = myData[analizeArrayTree[i]]
-    }
-  }
-
-  if(max>=500){
-    scale = 50;
-  } else {
-    if(max>=250){
-      scale = 25;
-    } else {
-      if(max>=100){
-        scale = 15;
-      } else {
-        if(max>=50){
-          scale = 10;
-        } else {
-          if(max>=25){
-            scale = 5;
+          if(max>=50){
+            scale = 10;
           } else {
             scale = 1;
           }
         }
       }
     }
-  }
 
-  let myBarchart3 = new Barchart(
-    {
-      canvas:myCanvas3,
-      padding:25,
-      gridScale:scale,
-      gridColor:"#000",
-      data:myData,
-      analizeArray:analizeArrayTree,
-      colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
+    let myBarchart1 = new Barchart(
+      {
+        canvas:myCanvas1,
+        padding:25,
+        gridScale:scale,
+        gridColor:"#000",
+        data:myData1,
+        analizeArray:analizeArrayOne,
+        colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
+      }
+    );
+
+    myBarchart1.draw();
+
+    let table = document.getElementById("table1");
+    table.innerHTML = '<table><tbody id="tableBody1"><tr><th>Буква</th><th>Кількість входжень</th>';
+    let tableBody = document.getElementById("tableBody1");
+    for(let i=0; i<analizeArrayOne.length; i++){
+      tableBody.innerHTML += "<tr><td>" + analizeArrayOne[i] + "</td><td>" + myData1[analizeArrayOne[i]] + "</td></tr>";
     }
-  );
+    table1.innerHTML += "</tbody></table>";
 
-  myBarchart3.draw();
-
-  let table = document.getElementById("table3");
-  table.innerHTML = '<table><tbody id="tableBody3"><tr><th>Букви</th><th>Кількість входжень</th>';
-  let tableBody = document.getElementById("tableBody3");
-  for(let i=0; i<analizeArrayTree.length; i++){
-    tableBody.innerHTML += "<tr><td>" + analizeArrayTree[i] + "</td><td>" + myData[analizeArrayTree[i]] + "</td></tr>";
   }
-  table.innerHTML += "</tbody></table>";
+}
+
+function drawCanvas2() {
+
+  ctx2.clearRect(0, 0, myCanvas2.width, myCanvas2.height);
+
+  text = getText();
+
+  if(text.length>=2){
+
+    myCanvas2.style.display = "block";
+    document.getElementById("divMyCanvas2").style.display = "block";
+
+    myData = twoSymbol(text);
+    myData = sortAlfTwo(myData);
+
+    //console.log(text.length);
+
+    max = 0;
+    for(let i=0; i<analizeArrayTwo.length; i++){
+      if(myData[analizeArrayTwo[i]]>max){
+        max = myData[analizeArrayTwo[i]]
+      }
+    }
+
+    if(max>=500){
+      scale = 50;
+    } else {
+      if(max>=250){
+        scale = 25;
+      } else {
+        if(max>=100){
+          scale = 15;
+        } else {
+          if(max>=50){
+            scale = 10;
+          } else {
+            scale = 1;
+          }
+        }
+      }
+    }
+
+    let myBarchart2 = new Barchart(
+      {
+        canvas:myCanvas2,
+        padding:25,
+        gridScale:scale,
+        gridColor:"#000",
+        data:myData,
+        analizeArray:analizeArrayTwo,
+        colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
+      }
+    );
+
+    myBarchart2.draw();
+
+    let table = document.getElementById("table2");
+    table.innerHTML = '<table><tbody id="tableBody2"><tr><th>Букви</th><th>Кількість входжень</th>';
+    let tableBody = document.getElementById("tableBody2");
+    for(let i=0; i<analizeArrayTwo.length; i++){
+      tableBody.innerHTML += "<tr><td>" + analizeArrayTwo[i] + "</td><td>" + myData[analizeArrayTwo[i]] + "</td></tr>";
+    }
+    table.innerHTML += "</tbody></table>";
+  }
+}
+
+function drawCanvas3() {
+  
+
+  ctx3.clearRect(0, 0, myCanvas3.width, myCanvas3.height);
+
+  text = getText();
+
+  if(text.length>=3){
+
+    myCanvas3.style.display = "block";
+    document.getElementById("divMyCanvas3").style.display = "block";
+
+    myData = treeSymbol(text);
+    myData = sortAlfTree(myData);
+
+    //console.log(text.length);
+
+    max = 0;
+    for(let i=0; i<analizeArrayTree.length; i++){
+      if(myData[analizeArrayTree[i]]>max){
+        max = myData[analizeArrayTree[i]]
+      }
+    }
+
+    if(max>=500){
+      scale = 50;
+    } else {
+      if(max>=250){
+        scale = 25;
+      } else {
+        if(max>=100){
+          scale = 15;
+        } else {
+          if(max>=50){
+            scale = 10;
+          } else {
+            if(max>=25){
+              scale = 5;
+            } else {
+              scale = 1;
+            }
+          }
+        }
+      }
+    }
+
+    let myBarchart3 = new Barchart(
+      {
+        canvas:myCanvas3,
+        padding:25,
+        gridScale:scale,
+        gridColor:"#000",
+        data:myData,
+        analizeArray:analizeArrayTree,
+        colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
+      }
+    );
+
+    myBarchart3.draw();
+
+    let table = document.getElementById("table3");
+    table.innerHTML = '<table><tbody id="tableBody3"><tr><th>Букви</th><th>Кількість входжень</th>';
+    let tableBody = document.getElementById("tableBody3");
+    for(let i=0; i<analizeArrayTree.length; i++){
+      tableBody.innerHTML += "<tr><td>" + analizeArrayTree[i] + "</td><td>" + myData[analizeArrayTree[i]] + "</td></tr>";
+    }
+    table.innerHTML += "</tbody></table>";
+  }
+  
 }
